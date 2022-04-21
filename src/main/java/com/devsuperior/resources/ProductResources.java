@@ -9,25 +9,25 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.devsuperior.model.Category;
-import com.devsuperior.repository.CategoryRepository;
+import com.devsuperior.model.Product;
+import com.devsuperior.repository.ProductRepository;
 
 @RestController
-@RequestMapping(value = "/categories")
-public class CategoryResources {
+@RequestMapping(value = "/products")
+public class ProductResources {
 	
 	@Autowired
-	private CategoryRepository categoryRepository;
+	private ProductRepository ProductRepository;
 	
 	@GetMapping
-	public ResponseEntity<List<Category>> findAll(){
-		List<Category> list = categoryRepository.findAll();
+	public ResponseEntity<List<Product>> findAll(){
+		List<Product> list = ProductRepository.findAll();
 		return ResponseEntity.ok().body(list);
 	}
 	
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<Category> findById(@PathVariable Long id){
-		Category obj = categoryRepository.findById(id).get();
+	public ResponseEntity<Product> findById(@PathVariable Long id){
+		Product obj = ProductRepository.findById(id).get();
 		return ResponseEntity.ok().body(obj);
 		
 	}
